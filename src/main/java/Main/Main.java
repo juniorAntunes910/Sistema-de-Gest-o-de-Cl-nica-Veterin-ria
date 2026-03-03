@@ -1,6 +1,7 @@
 package Main;
 
 import DAO.*;
+import DTO.TotalVendas;
 import Entities.*;
 import Enum.StatusConsultation;
 
@@ -16,6 +17,7 @@ public class Main {
     private static final VetDAO VET_DAO = new VetDAO();
     private static final ConsultationDAO CONSULTATION_DAO = new ConsultationDAO();
     private static final MedicalRecodDAO MEDICAL_RECOD_DAO = new MedicalRecodDAO();
+    private static final RelatoriosDAO RELATORIOS_DAO = new RelatoriosDAO();
     public static void main(String[] args) {
         firstMenu();
     }
@@ -43,8 +45,10 @@ public class Main {
                     break;
                 case 3:
                     registerVet();
+                    break;
                 case 4:
                     appointmentScheduling();
+                    break;
                 case 5:
                     diagnosticsLog();
                     break;
@@ -184,7 +188,9 @@ public class Main {
         );
     }
     public static void financialAndOperationReports() {
-
+        TotalVendas totalVendas = RELATORIOS_DAO.somarVendas();
+        System.out.println("=== Total Sales ===");
+        System.out.println(totalVendas);
     }
 
     public static void showClients(){
